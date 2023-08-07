@@ -62,11 +62,29 @@ ul li {
   border-radius: 10px;
   box-shadow: 0 0 10px grey;
   padding: 2%;
+  transition: all .5s ease-in-out;
+}
+.done {
+  box-shadow: 0 0 20px green;
+  background-color: rgb(165, 214, 92);
+}
+.done p {
+  text-decoration: line-through;
 }
 ul li p {
+  width: 70%;
   margin: 0;
   color: #5b5b5b;
   user-select: none;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  transition: all 1s ease-in-out;
+}
+ul li p:hover {
+  white-space: normal;
+  overflow: visible; 
+  text-overflow: unset;
 }
 
 .actions {

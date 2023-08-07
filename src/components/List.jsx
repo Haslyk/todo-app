@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-const List = ({list, setList, handleClick}) => {
+const List = ({list, setList}) => {
+  useEffect(() => {
+    console.log(list)
+  },[list])
 
 
   return (
@@ -15,8 +18,15 @@ const List = ({list, setList, handleClick}) => {
                   <button className="btn btn-danger" onClick={() => setList(list.filter((number, i) => i !== index))}>
                       <i className="fa-solid fa-trash"></i>
                   </button>
-                  <button className="btn btn-success" onClick={handleClick(index)}>
-                      <i className="fa-solid fa-check"></i>
+                  <button 
+                    className={!item[0].done ? "btn btn-success" : "btn btn-warning"} 
+                    onClick={() => {
+                      const newList = [...list];
+                      newList[index][0].done = !newList[index][0].done;
+                      setList(newList); 
+                    }}
+                  >
+                    <i className={!item[0].done ? "fa-solid fa-check" : "fa-solid fa-xmark"}></i>
                   </button>
                 </div>
             </li>
@@ -24,8 +34,8 @@ const List = ({list, setList, handleClick}) => {
       </ul>
       </div>
       :
-      <div>
-        Yapılacak İş Yok
+      <div className='text-center'>
+        <h3>Yapılacak İş Yok!</h3>
       </div>
     
   )
